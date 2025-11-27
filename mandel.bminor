@@ -1,0 +1,50 @@
+xmin: constant = -2.0;
+xmax: constant = 1.0;
+ymin: constant = -1.5;
+ymax: constant = 1.5;
+width : constant = 80.0;
+height: constant = 40.0;
+
+in_mandelbrot: function boolean (x0: float, y0:  float, n: integer) = {
+  x: float = 0.0;
+  y: float = 0.0;
+  xtemp: float = 0.0;
+  
+  while (n > 0) {
+  	xtemp = x*x - y*y + x0;
+  	y = 2.0*x*y + y0;
+  	x = xtemp;
+  	n = n - 1;
+  	if (x*x + y*y > 4.0) {
+  		return false;
+  	}
+  }
+  return true;
+}
+
+mandel: function integer (theshold: integer) = {
+	dx: float = (xmax - xmin)/width;
+	dy: float = (ymax - ymin)/height;
+
+	y: float = ymax;
+	x: float = 0.0;
+
+	while (y >= ymin) {
+		x = xmin;
+		while (x < xmax) {
+			if (in_mandelbrot(x,y,threshhold)) {
+				print '*';
+			} else {
+				print '.';
+			}
+			x = x + dx;
+		}
+		print '\n';
+		y = y - dy;
+	}
+	return 0;
+}
+
+main: function integer () = {
+	return mandel(1000);
+}
