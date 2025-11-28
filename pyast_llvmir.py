@@ -30,7 +30,7 @@ from typing import Dict, Optional
 from llvmlite import ir, binding as llvm
 
 # --- Inicialización de backend/target ---
-llvm.initialize()
+# llvm.initialize()
 llvm.initialize_native_target()
 llvm.initialize_native_asmprinter()
 _target = llvm.Target.from_default_triple()

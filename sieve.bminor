@@ -1,0 +1,45 @@
+/* ========================================================================== *
+ *                                                                            *
+ * sieve.bminor                                                               *
+ *                                                                            *
+ * Implementación del Algoritmo de Eratostenes para encontrar los numeros     *
+ * primos hasta un numero N dado.                                             *
+ *                                                                            *
+ * ========================================================================== *
+ */
+
+switch (expression)
+{
+    case constant_expression:
+        break;
+    default:
+}
+
+N: integer = 100;
+isprime: array [N] boolean;
+
+main: function void () = {
+    i: integer;
+    j: integer;
+
+    for (i=0; i <= N; i++) {
+        isprime[i] = true;
+    }
+
+    isprime[0] = false;
+    isprime[1] = false;
+
+    for (i=0; i*i < N; i++) {
+        if (isprime[i]) {
+            for (j = i*i; j < N; j++) {
+                isprime[j] = false;
+            }
+        }
+    }
+
+    for (i = 0; i < N; i++) {
+        if (isprime[i]) {
+            print i;
+        }
+    }
+}
